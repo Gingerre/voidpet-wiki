@@ -98,8 +98,8 @@ export default function Home(props: { pages: [key: string] }) {
               link="/leveling"
             />
             <Featured
-              title="Vivds"
-              description="Vivids, the Shiny's of Voidpet - differently colored voidpets."
+              title="Vivids"
+              description="Vivids, the Shiny's of Voidpet (differently colored Voidpets)."
               link="/vivids"
             />
             
