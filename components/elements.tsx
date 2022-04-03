@@ -17,12 +17,12 @@ export function H2(props: { children: any }) {
       <span id={anchor} className="invisible pt-20 -mt-20 absolute "></span>
       <h2 id={anchor} className="group -translate-x-6 font-bold">
         <Link href={link}>
-          <a  className="!no-underline relative font-bold">
-          <span className="opacity-0 group-hover:opacity-100 transition duration-300 font-bold">
-            #
-          </span>{" "}
-          {props.children}
-        </a>
+          <a className="!no-underline relative font-bold">
+            <span className="opacity-0 group-hover:opacity-100 transition duration-300 font-bold">
+              #
+            </span>{" "}
+            {props.children}
+          </a>
         </Link>
       </h2>
     </div>
@@ -59,9 +59,13 @@ export function TABLE(props: { children: any }) {
   );
 }
 
-export const CustomLink = (props: JSX.IntrinsicAttributes & ClassAttributes<HTMLAnchorElement> & AnchorHTMLAttributes<HTMLAnchorElement>) => {
+export const CustomLink = (
+  props: JSX.IntrinsicAttributes &
+    ClassAttributes<HTMLAnchorElement> &
+    AnchorHTMLAttributes<HTMLAnchorElement>
+) => {
   const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+  const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
 
   if (isInternalLink) {
     return (
@@ -72,4 +76,23 @@ export const CustomLink = (props: JSX.IntrinsicAttributes & ClassAttributes<HTML
   }
 
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
+};
+
+export const IMG = (props: {
+  src: string;
+  alt: string;
+  height: number;
+  width: number;
+}) => {
+  const imageProps = {
+    src: props.src,
+    alt: props.alt,
+    height: props.height,
+    width: props.width,
+  };
+  return (
+    <div className="img-shadow-cause-nextjs-is-stupid">
+      <Image {...imageProps} className="shadow-xl" />
+    </div>
+  );
 };

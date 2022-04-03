@@ -17,7 +17,7 @@ body {
 
 
 th {
-  @apply !min-w-[9rem];
+  @apply !min-w-[6rem];
 }
 
 :root {
@@ -31,6 +31,9 @@ th {
 }
 
 .link {
-  @apply underline underline-offset-2 decoration-blue-500 hover:decoration-2 transition cursor-pointer;
+  @apply !underline underline-offset-2 decoration-blue-500 hover:decoration-2 transition cursor-pointer;
 }
 
+.img-shadow-cause-nextjs-is-stupid > span {
+  @apply shadow-xl;
+}

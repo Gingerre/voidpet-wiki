@@ -3,9 +3,11 @@ import getPage from "../helpers/getPage";
 import getPages from "../helpers/getPages";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { H2, H3, TABLE, CustomLink } from "../components/elements";
+import { H2, H3, TABLE, CustomLink, IMG } from "../components/elements";
 import Head from "next/head";
 import remarkGfm from "remark-gfm";
+import Image from "next/image";
+import rehypeImgSize from "rehype-img-size";
 
 function Post(props: {
   data: {
@@ -73,7 +75,7 @@ function Post(props: {
           <article
             className={
               "prose dark:prose-invert mt-12 prose-a:underline prose-a:underline-offset-2 prose-a:decoration-blue-500 " +
-              "hover:prose-a:decoration-2 prose-a:transition prose-a:cursor-pointer prose-img:rounded-xl prose-img:shadow-lg max-w-[93vw] md:max-w-2xl prose-img:max-w-md"
+              "hover:prose-a:decoration-2 prose-a:transition prose-a:cursor-pointer prose-img:rounded-xl   max-w-[93vw] md:max-w-2xl prose-img:max-w-md "
             }
           >
             <MDXRemote
@@ -81,7 +83,8 @@ function Post(props: {
                 h2: H2,
                 h3: H3,
                 table: TABLE,
-                a: CustomLink
+                a: CustomLink,
+                img: IMG
               }}
               {...props.content}
             />
@@ -166,7 +169,10 @@ export const getStaticProps: GetStaticProps = async (props: {
   const page = await getPage(props.params?.slug);
   const mdxSource = await serialize(page.content, {
     scope: {},
-    mdxOptions: { remarkPlugins: [remarkGfm] },
+    mdxOptions: { 
+      remarkPlugins: [remarkGfm], 
+      //@ts-expect-error
+      rehypePlugins: [[rehypeImgSize, { dir: "public" }]], },
   });
   return {
     props: {
