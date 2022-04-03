@@ -99,7 +99,7 @@ function Header() {
           initialValues={{"search": ""}}
           onSubmit={(values) => {
             router.push(`/search?q=${values.search}`);
-            
+
           }}
           >
             <Form>
@@ -143,22 +143,20 @@ function Header() {
           title="Explore"
           dropdown={[
             { name: "Home", to: "/" },
-            { name: "All Pages", to: "/" },
+            { name: "All Pages", to: "/search" },
           ]}
         />
         <Dropdown
           title="Guide"
           dropdown={[
-            { name: "Getting Started", to: "/" },
-            { name: "Activities & Bond", to: "/" },
-            { name: "Attacking", to: "/" },
+            { name: "Getting Started", to: "/getting-started" },
+            { name: "Activities & Bond", to: "/bond-and-skills" },
+            { name: "Attacking", to: "/attacking" },
           ]}
         />
         <Dropdown
           title="Resources"
           dropdown={[
-            { name: "Discord", to: "/" },
-            { name: "Wiki Rules", to: "/" },
             { name: "Contribute", to: "/contribute" },
           ]}
         />
