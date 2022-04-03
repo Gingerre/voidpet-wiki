@@ -19,7 +19,7 @@ export default function Search(props: { data: any }) {
 
   
   const formik = useFormik({
-    initialValues: { filter: "" },
+    initialValues: { filter: q as unknown as string},
 
     onSubmit: (values) => {
       setData(handler(props.data, values.filter));

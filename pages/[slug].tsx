@@ -73,7 +73,7 @@ function Post(props: {
           <article
             className={
               "prose dark:prose-invert mt-12 prose-a:underline prose-a:underline-offset-2 prose-a:decoration-blue-500 " +
-              "hover:prose-a:decoration-2 prose-a:transition prose-a:cursor-pointer prose-img:rounded-xl prose-img:shadow-lg max-w-[93vw] md:max-w-2xl"
+              "hover:prose-a:decoration-2 prose-a:transition prose-a:cursor-pointer prose-img:rounded-xl prose-img:shadow-lg max-w-[93vw] md:max-w-2xl prose-img:max-w-md"
             }
           >
             <MDXRemote

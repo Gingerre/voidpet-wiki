@@ -99,6 +99,7 @@ function Header() {
           initialValues={{"search": ""}}
           onSubmit={(values) => {
             router.push(`/search?q=${values.search}`);
+            
           }}
           >
             <Form>
