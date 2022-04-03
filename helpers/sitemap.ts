@@ -1,8 +1,15 @@
-import { GetServerSideProps } from "next"
-import getPages from "../helpers/getPages"
-import { MainData } from "./quests"
+import fs from 'fs';
 
+const SITEMAP_PATH = './public/sitemap.xml';
 const EXTERNAL_DATA_URL = 'https://wiki.voidpet.io'
+
+export default (posts: any): void => {
+  const stream = fs.createWriteStream(SITEMAP_PATH, { flags: 'a' });
+  stream.write(generateSiteMap(posts));
+  stream.end();
+};
+
+
 
 function generateSiteMap(posts: {
 	slug: string;
@@ -29,25 +36,3 @@ function generateSiteMap(posts: {
    </urlset>
  `
 }
-
-function SiteMap() {
-  // getServerSideProps will do the heavy lifting
-}
-
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const pages = getPages();
-	const sitemap = generateSiteMap(pages)
-
-	res.setHeader('Content-Type', 'text/xml')
-  // we send the XML to the browser
-  res.write(sitemap)
-  res.end()
-
-  return {
-    props: {
-      data: pages,
-    },
-  };
-}
-
-export default SiteMap;

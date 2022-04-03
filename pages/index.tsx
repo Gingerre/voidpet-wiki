@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import PostCard from "../components/PostCard";
 import getPages from "../helpers/getPages";
+import genSitemap from "../helpers/sitemap"
 
 export default function Home(props: { pages: [key: string] }) {
   return (
@@ -96,6 +97,11 @@ export default function Home(props: { pages: [key: string] }) {
               description="Learn how to level up, wwhen your pet will evolve, and more"
               link="/leveling"
             />
+            <Featured
+              title="Vivds"
+              description="Vivids, the Shiny's of Voidpet - differently colored voidpets."
+              link="/vivids"
+            />
             
           </div>
           {/*posts.map((post) => (
@@ -164,7 +170,7 @@ export default function Home(props: { pages: [key: string] }) {
 
 export const getStaticProps: GetStaticProps = () => {
   const pages = getPages();
-
+  genSitemap(pages)
   return {
     props: {
       pages,
